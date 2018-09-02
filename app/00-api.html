@@ -1,0 +1,169 @@
+<!--http://www.wbest.net.cn/apptest/index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="/js/jquery.min.js"></script>
+<br>
+<button onclick="login()">登录</button>
+<button onclick="editUser()">修改用户</button></br></br>
+<button onclick="getResumeCount()">查看收藏数量</button></br></br>
+<button onclick="getPostPage()">查看职位列表</button>
+<button onclick="getAPost()">查看职位详情</button></br></br>
+<button onclick="getResumeList()">查看简历列表</button>
+<button onclick="getAResume()">查看简历详情</button></br></br>
+<button onclick="getDepartment()">查看部门信息</button>
+</body>
+<script type="text/javascript">
+  //用户对象
+  var user = {
+    userName: "",
+    userCode: "",
+    password: ""
+  }
+  //       登录
+  function login() {
+    var user={
+      userName: "1",
+      password: "12345678"
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/framework/acl/web2/listener/loginUserAndPwdListener/loginUserAndPwd.do',
+      data: user,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+  //根据userCode修改密码
+  function editUser() {
+    var user = {
+      userCode: "1",
+      password: "123"
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/f/org/user/modifyPassword.action',
+      data: user,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+
+  //查看收藏数量
+  function getResumeCount() {
+    //先传空的对象，以后需要传userCode
+    var user = {
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/resumeInfo/searchPostNum.action',
+      data: user,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+
+  //查看职位列表
+  function getPostPage() {
+    //以后可能需要传userCode
+    var d = {
+      isOnline:1,
+      name:"",
+      pageIndex:1,
+      pageSize:5
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/postInfo/searchPostInfoForPage.action',
+      data: d,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+  //查看职位详情
+  function getAPost() {
+    //以后可能需要传userCode
+    var d = {
+      id:1,
+      isUpdateViewCount:true
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/postInfo/searchPostInfoById.action',
+      data: d,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+
+  //查看简历列表
+  function getResumeList() {
+    //以后可能需要传userCode
+    var d = {
+      pageIndex:1,
+      pageSize:5,
+      action:"",
+      //以下都为输入框的内容，以后改为1个字段,没有实现搜索
+      name:"",
+      phase:"",
+      postName:""
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/resumeInfo/searchViewResumePostSendForPage.action',
+      data: d,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+  //查看简历详情
+  function getAResume() {
+    //以后可能需要传userCode
+    var d = {
+      id:2
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/resumeInfo/searchResumeInfoById.action',
+      data: d,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+
+  //查看部门信息,职位详情里面显示
+  function getDepartment() {
+    //以后可能需要传userCode
+    var d = {
+      id:2
+    }
+    $.ajax({
+      type: "get",
+      url: 'http://www.wbest.net.cn/apptest/orgOut/searchRootDept.action',
+      data: d,
+      dataType:'json',
+      success: function (date) {
+        console.log(date);
+      }
+    });
+  }
+
+</script>
+</html>
