@@ -4,7 +4,7 @@
             <!--头部-->
             <div class="row fixTop">
                 <div class="col-xs-1 contHeardImg"><img onclick="javascript:history.back(-1)" height="20px" src="../assets/static/img/goBackIcon.png" alt=""></div>
-                <div class="col-xs-6 textC">
+                <div class="col-xs-8 textC">
                     <div class="btn-group">
                         <a class="btn noBG dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             简历详情

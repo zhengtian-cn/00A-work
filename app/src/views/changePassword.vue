@@ -3,7 +3,7 @@
         <div class="container contHeard">
             <!--头部-->
             <div class="row fixTop">
-                <div class="col-xs-4 contHeardImg"><img height="20px" src="../assets/static/img/goBackIcon.png" alt=""></div>
+                <div class="col-xs-4 contHeardImg"><img onclick="javascript:history.back(-1)" height="20px" src="../assets/static/img/goBackIcon.png" alt=""></div>
                 <div class="col-xs-8">
                     <div class="btn-group">
                         <a class="btn noBG dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
